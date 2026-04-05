@@ -176,6 +176,15 @@
             }
         }
 
+        /* CSS baru untuk center button */
+        .button-wrapper {
+            display: flex;
+            justify-content: center;  /* Center horizontal */
+            align-items: center;      /* Center vertical */
+            width: 100%;
+            margin-top: 20px;
+        }
+        
         /* Smartphone kecil (iPhone SE, dll) - < 375px */
         @media (max-width: 375px) {
             .landing-container {
@@ -377,10 +386,12 @@
             </div>
         </div>
 
-        <a href="frontend/pages/dashboard.html" class="entry-button">
-            <span>Masuk ke Aplikasi</span>
-            <span class="arrow-icon">→</span>
-        </a>
+        <div class="button-wrapper">
+            <a href="frontend/pages/dashboard.html" class="entry-button">
+                <span>Masuk ke Aplikasi</span>
+                <span class="arrow-icon">→</span>
+            </a>
+        </div>
 
         <div class="footer-note">
             © 2026 SAS OrderApps. Local Website Version.
