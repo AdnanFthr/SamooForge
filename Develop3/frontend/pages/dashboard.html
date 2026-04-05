@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - V3 System</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/Logo3.png">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="../components/sidebar.css">
+    
+    <!-- URUTAN PENTING: db.js HARUS sebelum config.js -->
+    <script src="../assets/js/db.js"></script>
+    <script src="../assets/js/config.js"></script>
+    
+    <style>
+        .demo-panel {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border: 1px solid #ff9800;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .demo-panel h3 {
+            color: #e65100;
+            margin-bottom: 15px;
+        }
+        .user-switcher {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .user-btn {
+            padding: 10px 20px;
+            border: 2px solid #ff9800;
+            background: white;
+            color: #e65100;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .user-btn:hover {
+            background: #ff9800;
+            color: white;
+        }
+        .user-btn.active {
+            background: #ff9800;
+            color: white;
+        }
+        .user-btn.inactive-user {
+            border-color: #9e9e9e;
+            color: #616161;
+            opacity: 0.7;
+        }
+        .user-btn.inactive-user:hover {
+            background: #9e9e9e;
+            color: white;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .stat-label {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+        .status-active { background: #2ecc71; box-shadow: 0 0 5px #2ecc71; }
+        .status-inactive { background: #e74c3c; }
+    </style>
+</head>
+<body>
+
+    <button id="mobile-menu-btn" class="mobile-toggle">☰ Menu</button>
+
+    <div class="app-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../assets/images/Logo.jpg" alt="Logo SAS" class="sidebar-logo">
+                <h2>V3 SYSTEM</h2>
+                <div class="clock-box" id="real-time-clock">00:00</div>
+            </div>
+
+            <div class="user-info-panel">
+                <div class="user-info-header">
+                    <div class="user-avatar">👤</div>
+                    <div class="user-info-details">
+                        <div class="user-name" id="sidebar-user-name">Loading...</div>
+                        <div class="user-dept" id="sidebar-user-dept">Loading...</div>
+                    </div>
+                </div>
+                <div class="user-info-divider"></div>
+                <div class="user-info-status">
+                    <span class="status-dot"></span>
+                    <span>Online</span>
+                </div>
+            </div>
+
+            <nav class="nav-list">
+                <div style="text-align: center; padding: 20px; color: rgba(255,255,255,0.7);">
+                    Memuat menu...
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <!-- Demo Panel -->
+            <div class="demo-panel">
+                <h3>🎮 Demo Mode - Switch User</h3>
+                <p style="margin-bottom: 15px; color: #bf360c;">Klik untuk mengganti user aktif (tanpa login ulak):</p>
+                
+                <!-- User Buttons Container - Akan di-render oleh JavaScript -->
+                <div class="user-switcher" id="user-switcher-container">
+                    <!-- Buttons akan di-generate otomatis dari config.js -->
+                </div>
+                
+                <p style="margin-top: 15px; font-size: 0.85rem; color: #e65100;">
+                    User aktif: <strong id="current-user-display">-</strong> | 
+                    <a href="#" onclick="APP_CONFIG.resetAllData().then(() => location.reload())" style="color: #bf360c;">Reset All Data</a>
+                </p>
+            </div>
+
+            <header style="margin-bottom: 30px;">
+                <h1 id="welcome-text">Selamat Datang</h1>
+                <p style="color: #636e72;">Dashboard Local Website - V3 System</p>
+            </header>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-users">0</div>
+                    <div class="stat-label">Total Users</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-requests">0</div>
+                    <div class="stat-label">Total Requests</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-pd">0</div>
+                    <div class="stat-label">Total Pengajuan Dana</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-pending">0</div>
+                    <div class="stat-label">Menunggu Approval</div>
+                </div>
+            </div>
+
+            <div class="card-modern" style="margin-top: 30px;">
+                <h3>📊 Informasi Sistem</h3>
+                <p>Ini adalah <strong>Local Website Version</strong> dari SAS OrderApps V3.</p>
+                <ul style="margin-top: 15px; line-height: 1.8; color: #64748b;">
+                    <li>✅ Data tersimpan di browser (IndexedDB)</li>
+                    <li>✅ Tidak memerlukan server PHP/MySQL</li>
+                    <li>✅ Bisa dijalankan langsung dari file HTML</li>
+                    <li>⚠️ Data akan hilang jika browser cache dihapus</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <script src="../app.js"></script>
+    <script src="../logic/sidebar-dynamics.js"></script>
+    <script>
+        // Generate user buttons dari config.js MOCK_DATA
+        function renderUserButtons() {
+            const container = document.getElementById('user-switcher-container');
+            const session = JSON.parse(sessionStorage.getItem('sas_user_session') || '{}');
+            
+            // Ambil data users dari APP_CONFIG
+            let users = [];
+            if (typeof APP_CONFIG !== 'undefined' && APP_CONFIG.MOCK_DATA && APP_CONFIG.MOCK_DATA.users) {
+                users = APP_CONFIG.MOCK_DATA.users;
+            }
+            
+            if (users.length === 0) {
+                container.innerHTML = '<p style="color: #999;">Tidak ada data user</p>';
+                return;
+            }
+            
+            let html = '';
+            
+            users.forEach(user => {
+                const isActive = session.id === user.id;
+                const isActiveClass = isActive ? 'active' : '';
+                const inactiveClass = user.is_active === 0 ? 'inactive-user' : '';
+                const statusIcon = user.is_active === 1 ? '🟢' : '🔴';
+                const roleIcon = getRoleIcon(user.id_role);
+                
+                html += `
+                    <button class="user-btn ${isActiveClass} ${inactiveClass}" 
+                            onclick="switchToUser('${user.id}')"
+                            title="${user.nama_role} - ${user.departemen} ${user.is_active === 0 ? '(Nonaktif)' : ''}">
+                        ${roleIcon} ${user.nama_lengkap.split(' ')[0]} ${statusIcon}
+                    </button>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+        
+        function getRoleIcon(roleId) {
+            const icons = {
+                '01': '👑',  // Admin
+                '02': '👤',  // User
+                '03': '✅'   // Approver
+            };
+            return icons[roleId] || '👤';
+        }
+        
+        // Update welcome text dan stats
+        async function updateDashboard() {
+            const session = JSON.parse(sessionStorage.getItem('sas_user_session') || '{}');
+            document.getElementById('welcome-text').textContent = `Selamat Datang, ${session.nama_lengkap || 'Guest'}`;
+            document.getElementById('current-user-display').textContent = `${session.nama_lengkap} (${session.nama_role})`;
+            
+            // Render user buttons
+            renderUserButtons();
+            
+            // Load stats
+            try {
+                const users = await LocalDB.getAll('users');
+                const requests = await LocalDB.getAll('requests');
+                const pd = await LocalDB.getAll('pd');
+                const pending = requests.filter(r => r.status === 'Waiting').length + pd.filter(p => p.status === 'Waiting').length;
+                
+                document.getElementById('stat-users').textContent = users.length;
+                document.getElementById('stat-requests').textContent = requests.length;
+                document.getElementById('stat-pd').textContent = pd.length;
+                document.getElementById('stat-pending').textContent = pending;
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+        
+        async function switchToUser(userId) {
+            // Cek jika user nonaktif
+            const user = APP_CONFIG.MOCK_DATA.users.find(u => u.id === userId);
+            if (user && user.is_active === 0) {
+                if (!confirm(`User ${user.nama_lengkap} sedang NONAKTIF. Tetap lanjutkan?`)) {
+                    return;
+                }
+            }
+            
+            await APP_CONFIG.switchUser(userId);
+            
+            // FORCE REFRESH SIDEBAR setelah ganti user
+            if (typeof window.refreshSidebar === 'function') {
+                window.refreshSidebar();
+            }
+            
+            location.reload();
+        }
+        
+        document.addEventListener('DOMContentLoaded', updateDashboard);
+    </script>
+</body>
+</html>

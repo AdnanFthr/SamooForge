@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - V3 System</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/Logo3.png">
+    
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="../components/sidebar.css">
+    <link rel="stylesheet" href="../components/filter-data.css">
+    <link rel="stylesheet" href="../components/table.css">
+    <link rel="stylesheet" href="../components/user-management.css">
+    <link rel="stylesheet" href="../components/modal.css">
+    <script src="../assets/js/config.js"></script>
+    <script>const API_BASE_URL = 'http://localhost/sas-orderapps/Develop3/gateway.php/request/user';</script>
+</head>
+<body>
+
+    <button id="mobile-menu-btn" class="mobile-toggle">☰ Menu</button>
+
+    <div class="app-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../assets/images/Logo.jpg" alt="Logo SAS" class="sidebar-logo">
+                <h2>V3 SYSTEM</h2>
+                <div class="clock-box" id="real-time-clock">00:00</div>
+            </div>
+
+            <!-- USER INFO PANEL - GLOBAL -->
+            <div class="user-info-panel">
+                <div class="user-info-header">
+                    <div class="user-avatar">👤</div>
+                    <div class="user-info-details">
+                        <div class="user-name" id="sidebar-user-name">Loading...</div>
+                        <div class="user-dept" id="sidebar-user-dept">Loading...</div>
+                    </div>
+                </div>
+                <div class="user-info-divider"></div>
+                <div class="user-info-status">
+                    <span class="status-dot"></span>
+                    <span>Online</span>
+                </div>
+            </div>
+
+            <nav class="nav-list">
+                <div style="text-align: center; padding: 20px; color: rgba(255,255,255,0.7);">
+                    Memuat menu...
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="action-bar">
+                <h1 style="color: var(--primary); font-size: 1.5rem;">Manajemen User</h1>
+                <button class="btn-add-user" onclick="openModal()">
+                    <span>+</span> Tambah User Baru
+                </button>
+            </header>
+
+            <section class="filter-section">
+                <div class="filter-header">
+                    <span>▼ Filter Data User</span>
+                </div>
+                <div class="filter-body">
+                    <div class="filter-group">
+                        <label>Pencarian</label>
+                        <input type="text" class="filter-input" placeholder="Cari nama atau username..." id="filter-search">
+                    </div>
+                    <div class="filter-group">
+                        <label>Role</label>
+                        <select class="filter-input" id="filter-role">
+                            <option value="">Semua Role</option>
+                            <option value="01">Admin</option>
+                            <option value="02">User</option>
+                            <option value="03">Approver SCM</option>
+                        </select>
+                    </div>
+                    <div class="filter-group"></div> 
+
+                    <div class="filter-actions">
+                        <button class="btn btn-reset" onclick="location.reload()">↺ Reset</button>
+                        <button class="btn btn-apply" id="btn-cari">🔍 Cari Data</button>
+                    </div>
+                </div>
+            </section>
+
+            <div class="table-count">Data User Terdaftar</div>
+
+            <div class="table-container">
+                <table class="modern-table">
+                    <thead>
+                        <tr>
+                            <th onclick="sortData('id')" style="cursor:pointer">ID User ↕</th>
+                            <th onclick="sortData('nama_lengkap')" style="cursor:pointer">Nama Lengkap ↕</th>
+                            <th onclick="sortData('username')" style="cursor:pointer">Username ↕</th>
+                            <th onclick="sortData('role')" style="cursor:pointer">Role ↕</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user-table-body">
+                        <tr>
+                            <td colspan="5" style="text-align: center; padding: 40px; color: #999;">
+                                Memuat data...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Tambah/Edit User -->
+    <div id="userModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Tambah User Baru</h3>
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+            </div>
+            <form id="addUserForm">
+                <div class="modal-body modal-grid">
+                    <div class="form-group">
+                        <label>Nama Lengkap</label>
+                        <input type="text" id="nama_lengkap" class="filter-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" id="username" class="filter-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password <span id="password-label-hint" style="font-size: 11px; color: #666;">(Auto-generated)</span></label>
+                        <input type="text" id="password" class="filter-input" readonly style="background-color: #f0f0f0; cursor: not-allowed;">
+                    </div>
+                    <div class="form-group">
+                        <label>Role</label>
+                        <select id="id_role" class="filter-input" required>
+                            <option value="01">Admin</option>
+                            <option value="02">User</option>
+                            <option value="03">Approver SCM</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Departemen</label>
+                        <input type="text" id="departemen" class="filter-input">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="email" class="filter-input">
+                    </div>
+                    <div class="form-group" style="grid-column: span 2;">
+                        <label>No. Handphone</label>
+                        <input type="tel" id="no_handphone" class="filter-input">
+                    </div>
+                    
+                    <!-- TAMBAHAN: SWITCH STATUS AKTIF/NONAKTIF -->
+                    <div class="form-group status-toggle-group" style="grid-column: span 2;">
+                        <label>Status User</label>
+                        <div class="status-switch-container">
+                            <label class="status-switch">
+                                <input type="checkbox" id="is_active" checked>
+                                <span class="status-slider"></span>
+                            </label>
+                            <span class="status-label" id="status-label-text">Aktif</span>
+                        </div>
+                        <small class="status-hint">Nonaktifkan user untuk menonaktifkan akses login</small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-reset" onclick="closeModal()">Batal</button>
+                    <button type="submit" class="btn btn-apply">Simpan Data</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal View User - Style Form Readonly -->
+    <div id="viewUserModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header modal-header-primary">
+                <h3>Detail Informasi User</h3>
+                <span class="close-modal" onclick="closeViewModal()">&times;</span>
+            </div>
+            <div class="modal-body modal-grid">
+                <div class="form-group">
+                    <label>ID User</label>
+                    <input type="text" id="v_id" class="filter-input view-input" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Role</label>
+                    <input type="text" id="v_role" class="filter-input view-input" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" id="v_nama" class="filter-input view-input" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="v_username" class="filter-input view-input" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="text" id="v_password" class="filter-input view-input" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <input type="text" id="v_status" class="filter-input view-input" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Departemen</label>
+                    <input type="text" id="v_dept" class="filter-input view-input" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" id="v_email" class="filter-input view-input" readonly>
+                </div>
+                <div class="form-group" style="grid-column: span 2;">
+                    <label>No. Handphone</label>
+                    <input type="text" id="v_phone" class="filter-input view-input" readonly>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-reset" onclick="closeViewModal()">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Konfirmasi Delete -->
+    <div id="confirmModal" class="modal-overlay">
+        <div class="modal-content modal-sm">
+            <div class="modal-header modal-header-danger">
+                <h3>Konfirmasi Hapus</h3>
+                <span class="close-modal" onclick="closeConfirmModal()">&times;</span>
+            </div>
+            <div class="modal-body modal-body-center">
+                <div class="modal-icon modal-icon-danger">⚠️</div>
+                <p id="confirmMessage" class="modal-message">Apakah Anda yakin?</p>
+                <p class="modal-submessage">Data yang dihapus tidak dapat dikembalikan</p>
+            </div>
+            <div class="modal-footer modal-footer-center">
+                <button class="btn btn-reset" onclick="closeConfirmModal()">Batal</button>
+                <button class="btn btn-danger" id="btnConfirmAction">Ya, Hapus</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Notifikasi Alert -->
+    <div id="alertModal" class="modal-overlay">
+        <div class="modal-content modal-sm">
+            <div class="modal-header modal-header-success">
+                <h3>Notifikasi</h3>
+                <span class="close-modal" onclick="closeAlertModal()">&times;</span>
+            </div>
+            <div class="modal-body modal-body-center">
+                <div class="modal-icon modal-icon-success">✓</div>
+                <p id="alertMessage" class="modal-message">Pesan</p>
+            </div>
+            <div class="modal-footer modal-footer-center">
+                <button class="btn btn-success" onclick="closeAlertModal()">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../app.js"></script>
+    <script src="../assets/js/db.js"></script>
+    <script src="../assets/js/config.js"></script>
+    <script src="../logic/user-management.js"></script>
+    <script src="../logic/user-action.js"></script>
+    <script src="../logic/user-filter.js"></script>
+    <script src="../logic/sidebar-dynamics.js"></script>
+</body>
+</html>

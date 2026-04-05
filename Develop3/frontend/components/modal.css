@@ -1,0 +1,744 @@
+/* =========================================
+   MODAL COMPONENT - Professional Design
+   ========================================= */
+
+/* 1. Overlay dengan efek blur yang lebih halus */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(15, 92, 147, 0.85), rgba(44, 62, 80, 0.9));
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    animation: fadeIn 0.3s ease;
+}
+
+/* 2. Konten Modal dengan glassmorphism effect */
+.modal-content {
+    background: rgba(255, 255, 255, 0.98);
+    width: 90%;
+    max-width: 650px;
+    border-radius: 20px;
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.25),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    animation: modalSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+}
+
+/* Decorative top border gradient */
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #c6a048, #0f5c93, #c6a048);
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
+}
+
+/* Size Variants */
+.modal-sm { max-width: 420px; }
+.modal-lg { max-width: 900px; }
+
+/* 3. Header Modal dengan gradient */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    position: relative;
+}
+
+.modal-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #c6a048, transparent);
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #1e293b;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Header variants dengan accent colors */
+.modal-header-primary {
+    background: linear-gradient(135deg, #0f5c93 0%, #1e3a5f 100%);
+    color: white;
+}
+
+.modal-header-primary h3 {
+    color: white;
+}
+
+.modal-header-primary .close-modal {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.modal-header-primary .close-modal:hover {
+    color: white;
+    transform: rotate(90deg);
+}
+
+.modal-header-success {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    color: white;
+}
+
+.modal-header-success h3 {
+    color: white;
+}
+
+.modal-header-danger {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    color: white;
+}
+
+.modal-header-danger h3 {
+    color: white;
+}
+
+.modal-header-danger .close-modal {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.modal-header-danger .close-modal:hover {
+    color: white;
+    transform: rotate(90deg);
+}
+
+/* Icon in header */
+.modal-header h3::before {
+    content: '◆';
+    color: #c6a048;
+    font-size: 0.8em;
+}
+
+.modal-header-primary h3::before,
+.modal-header-success h3::before,
+.modal-header-danger h3::before {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* 4. Close Button dengan animasi */
+.close-modal {
+    font-size: 24px;
+    font-weight: 300;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    line-height: 1;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.close-modal:hover {
+    color: #dc2626;
+    background: rgba(220, 38, 38, 0.1);
+    transform: rotate(90deg);
+}
+
+/* 5. Body Modal dengan spacing yang baik */
+.modal-body {
+    padding: 25px;
+    background: #ffffff;
+}
+
+.modal-body-center {
+    text-align: center;
+    padding: 35px 30px;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+/* Icon untuk modal alert/confirm */
+.modal-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    animation: pulse 2s infinite;
+}
+
+.modal-icon-success {
+    background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+    color: #059669;
+    box-shadow: 0 10px 25px -5px rgba(5, 150, 105, 0.3);
+}
+
+.modal-icon-danger {
+    background: linear-gradient(135deg, #fee2e2, #fecaca);
+    color: #dc2626;
+    box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.3);
+}
+
+.modal-icon-info {
+    background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+    color: #2563eb;
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.3);
+}
+
+.modal-message {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #334155;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.modal-submessage {
+    font-size: 0.95rem;
+    color: #64748b;
+    margin-top: 8px;
+}
+
+/* 6. Form Grid dengan gap yang proporsional */
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 25px;
+}
+
+/* Form group styling */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.form-group label::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: #c6a048;
+    border-radius: 50%;
+}
+
+/* Input styling yang modern */
+.form-group input,
+.form-group select {
+    padding: 12px 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: #1e293b;
+    background: #ffffff;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #c6a048;
+    box-shadow: 0 0 0 4px rgba(198, 160, 72, 0.1);
+    transform: translateY(-1px);
+}
+
+.form-group input:hover,
+.form-group select:hover {
+    border-color: #cbd5e1;
+}
+
+/* View mode input (readonly) */
+.view-input {
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%) !important;
+    color: #334155 !important;
+    cursor: default !important;
+    border: 2px solid #e2e8f0 !important;
+    font-weight: 500;
+}
+
+.view-input:focus {
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+/* 7. Footer Modal dengan gradient subtle */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 20px 25px;
+    background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+    border-top: 1px solid #e2e8f0;
+    position: relative;
+}
+
+.modal-footer::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+}
+
+.modal-footer-center {
+    justify-content: center;
+}
+
+/* 8. Button Styling yang Premium */
+.btn {
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* Button variants */
+.btn-apply {
+    background: linear-gradient(135deg, #0f5c93 0%, #1e3a5f 100%);
+    color: white;
+    box-shadow: 0 4px 15px -3px rgba(15, 92, 147, 0.4);
+}
+
+.btn-apply:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -5px rgba(15, 92, 147, 0.5);
+}
+
+.btn-reset {
+    background: #ffffff;
+    color: #64748b;
+    border: 2px solid #e2e8f0;
+}
+
+.btn-reset:hover {
+    border-color: #94a3b8;
+    color: #475569;
+    background: #f8fafc;
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    color: white;
+    box-shadow: 0 4px 15px -3px rgba(220, 38, 38, 0.4);
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -5px rgba(220, 38, 38, 0.5);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    color: white;
+    box-shadow: 0 4px 15px -3px rgba(5, 150, 105, 0.4);
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -5px rgba(5, 150, 105, 0.5);
+}
+
+/* 9. Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalSlideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* 10. Responsive Design */
+@media (max-width: 768px) {
+    .modal-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .form-group[style*="grid-column: span 2;"] {
+        grid-column: auto !important;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 15px;
+        border-radius: 16px;
+    }
+    
+    .modal-body {
+        padding: 20px;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* 11. Special effects untuk view modal */
+#viewUserModal .modal-header {
+    background: linear-gradient(135deg, #0f5c93 0%, #164e87 50%, #0f5c93 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 5s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 12. Loading state untuk button */
+.btn-loading {
+    position: relative;
+    color: transparent !important;
+    pointer-events: none;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* =========================================
+   MODAL RESPONSIVE FIX - Mobile Scrollable
+   ========================================= */
+
+/* 1. Overlay - tetap sama tapi pastikan z-index benar */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(15, 92, 147, 0.85), rgba(44, 62, 80, 0.9));
+    z-index: 10000;
+    justify-content: center;
+    align-items: flex-start; /* Ganti dari center ke flex-start */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    overflow-y: auto; /* Enable scroll pada overlay */
+    padding: 20px 0; /* Padding atas bawah */
+    box-sizing: border-box;
+}
+
+/* 2. Modal Content - Scrollable & Responsive */
+.modal-content {
+    background: rgba(255, 255, 255, 0.98);
+    width: 90%;
+    max-width: 650px;
+    max-height: 90vh; /* Batasi tinggi maksimal 90% viewport */
+    border-radius: 20px;
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.25),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    overflow: hidden; /* Sembunyikan overflow, body yang scroll */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: auto; /* Center vertically jika space cukup */
+    animation: modalSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* 3. Modal Body - Scrollable Area */
+.modal-body {
+    padding: 25px;
+    background: #ffffff;
+    overflow-y: auto; /* Enable scroll pada body */
+    max-height: calc(90vh - 140px); /* Kurangi header + footer */
+    -webkit-overflow-scrolling: touch; /* Smooth scroll di iOS */
+}
+
+/* 4. Modal Header & Footer - Fixed */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    flex-shrink: 0; /* Jangan shrink */
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 20px 25px;
+    background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+    border-top: 1px solid #e2e8f0;
+    flex-shrink: 0; /* Jangan shrink */
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+}
+
+/* 5. Detail Grid - Responsive Layout */
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.detail-section {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.detail-section.full-width {
+    grid-column: span 2;
+}
+
+.detail-section label {
+    font-size: 0.85rem;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.detail-value {
+    color: #1e293b;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.detail-value.description {
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* 6. History List - Scrollable jika panjang */
+.history-list {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 10px;
+    background: #f8fafc;
+}
+
+/* 7. Mobile Specific (< 768px) */
+@media (max-width: 768px) {
+    .modal-overlay {
+        padding: 10px 0;
+        align-items: flex-start;
+    }
+    
+    .modal-content {
+        width: 95%;
+        max-height: 95vh;
+        border-radius: 16px;
+        margin: 10px auto;
+    }
+    
+    .modal-header {
+        padding: 15px 20px;
+    }
+    
+    .modal-header h3 {
+        font-size: 1.1rem;
+    }
+    
+    .modal-body {
+        padding: 15px 20px;
+        max-height: calc(95vh - 120px);
+    }
+    
+    .modal-footer {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .modal-footer .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Detail Grid jadi 1 kolom di mobile */
+    .detail-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .detail-section.full-width {
+        grid-column: span 1;
+    }
+    
+    /* History lebih compact */
+    .history-list {
+        max-height: 150px;
+    }
+    
+    /* Attachment buttons grid */
+    .attachment-buttons-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+}
+
+/* 8. Very Small Screen (< 480px) */
+@media (max-width: 480px) {
+    .modal-content {
+        width: 100%;
+        max-height: 100vh;
+        border-radius: 0;
+        margin: 0;
+    }
+    
+    .modal-overlay {
+        padding: 0;
+    }
+    
+    .modal-body {
+        max-height: calc(100vh - 110px);
+    }
+    
+    .attachment-buttons-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 9. Animation tetap sama */
+@keyframes modalSlideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 10. Scrollbar Styling */
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* 11. Touch Device Optimization */
+@media (hover: none) and (pointer: coarse) {
+    .modal-body {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Larger touch targets */
+    .btn-mini {
+        min-width: 44px;
+        min-height: 44px;
+    }
+}

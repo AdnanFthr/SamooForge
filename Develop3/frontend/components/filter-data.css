@@ -1,0 +1,62 @@
+/* CSS Khusus Filter Section */
+.filter-section {
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border: 1px solid #e1e8ed;
+    overflow: hidden;
+}
+
+.filter-header {
+    background: #f8fbff; /* Biru sangat muda sesuai gambar */
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e1e8ed;
+    color: #0f5c93;
+    font-weight: bold;
+}
+
+.filter-body {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.filter-group { display: flex; flex-direction: column; gap: 5px; }
+.filter-group label { font-size: 12px; font-weight: bold; color: #4b7bec; }
+
+.filter-input {
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    background-color: #fff;
+}
+
+.filter-actions {
+    grid-column: span 3;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Button styling */
+.btn {
+    padding: 8px 18px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: white;
+}
+.btn-reset { background-color: #6c757d; }
+.btn-apply { background-color: #3c8dbc; }

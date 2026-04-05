@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoring - V3 System</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/Logo3.png">
+    
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="../components/sidebar.css">
+    <link rel="stylesheet" href="../components/filter-data.css">
+    <link rel="stylesheet" href="../components/table.css">
+    <link rel="stylesheet" href="../components/modal.css">
+    
+    <!-- URUTAN PENTING: db.js HARUS sebelum config.js -->
+    <script src="../assets/js/db.js"></script>
+    <script src="../assets/js/config.js"></script>
+    
+    <style>
+        .type-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .type-cache { background: #e3f2fd; color: #1976d2; }
+        .type-log { background: #e8f5e9; color: #388e3c; }
+        .type-session { background: #fff3e0; color: #ef6c00; }
+        
+        .status-active { background: #d4edda; color: #155724; }
+        .status-expired { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+
+    <button id="mobile-menu-btn" class="mobile-toggle">☰ Menu</button>
+
+    <div class="app-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../assets/images/Logo.jpg" alt="Logo SAS" class="sidebar-logo">
+                <h2>V3 SYSTEM</h2>
+                <div class="clock-box" id="real-time-clock">00:00</div>
+            </div>
+
+            <div class="user-info-panel">
+                <div class="user-info-header">
+                    <div class="user-avatar">👤</div>
+                    <div class="user-info-details">
+                        <div class="user-name" id="sidebar-user-name">Loading...</div>
+                        <div class="user-dept" id="sidebar-user-dept">Loading...</div>
+                    </div>
+                </div>
+                <div class="user-info-divider"></div>
+                <div class="user-info-status">
+                    <span class="status-dot"></span>
+                    <span>Online</span>
+                </div>
+            </div>
+
+            <nav class="nav-list">
+                <div style="text-align: center; padding: 20px; color: rgba(255,255,255,0.7);">
+                    Memuat menu...
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="action-bar">
+                <h1 style="color: var(--primary); font-size: 1.5rem;">Monitoring System</h1>
+                <button class="btn-reset" onclick="APP_CONFIG.resetAllData().then(() => { showAlert('Data direset'); loadMonitoring(); })" style="padding: 8px 16px; border-radius: 6px; border: none; cursor: pointer;">
+                    🔄 Reset Demo Data
+                </button>
+            </header>
+
+            <section class="filter-section">
+                <div class="filter-header">
+                    <span>▼ Filter Data</span>
+                </div>
+                <div class="filter-body">
+                    <div class="filter-group">
+                        <label>Pencarian</label>
+                        <input type="text" class="filter-input" placeholder="Cari data..." id="filter-search">
+                    </div>
+                    <div class="filter-group">
+                        <label>Tipe Data</label>
+                        <select class="filter-input" id="filter-type">
+                            <option value="">Semua Tipe</option>
+                            <option value="cache">Cache</option>
+                            <option value="log">Log</option>
+                            <option value="session">Session</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Status</label>
+                        <select class="filter-input" id="filter-status">
+                            <option value="">Semua Status</option>
+                            <option value="active">Active</option>
+                            <option value="expired">Expired</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-actions">
+                        <button class="btn btn-reset" onclick="resetFilter()">↺ Reset</button>
+                        <button class="btn btn-apply" id="btn-cari">🔍 Cari</button>
+                    </div>
+                </div>
+            </section>
+
+            <div class="table-count">Data Monitoring</div>
+
+            <div class="table-container">
+                <table class="modern-table">
+                    <thead>
+                        <tr>
+                            <th onclick="sortData('id')" style="cursor:pointer">ID ↕</th>
+                            <th onclick="sortData('type')" style="cursor:pointer">Tipe ↕</th>
+                            <th onclick="sortData('value')" style="cursor:pointer">Nilai ↕</th>
+                            <th onclick="sortData('created_at')" style="cursor:pointer">Tanggal ↕</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="monitoring-table-body">
+                        <tr>
+                            <td colspan="6" style="text-align: center; padding: 40px; color: #999;">
+                                Memuat data...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Alert -->
+    <div id="alertModal" class="modal-overlay">
+        <div class="modal-content modal-sm">
+            <div class="modal-header modal-header-success">
+                <h3>Notifikasi</h3>
+                <span class="close-modal" onclick="closeAlertModal()">&times;</span>
+            </div>
+            <div class="modal-body modal-body-center">
+                <div class="modal-icon modal-icon-success">✓</div>
+                <p id="alertMessage" class="modal-message">Pesan</p>
+            </div>
+            <div class="modal-footer modal-footer-center">
+                <button class="btn btn-success" onclick="closeAlertModal()">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../app.js"></script>
+    <script src="../logic/sidebar-dynamics.js"></script>
+    <script src="../logic/monitoring.js"></script>
+</body>
+</html>

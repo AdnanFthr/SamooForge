@@ -1,0 +1,217 @@
+/* SIDEBAR COMPONENT */
+.sidebar {
+    width: 280px;
+    background: linear-gradient(145deg, var(--primary), var(--primary-dark));
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    color: var(--white);
+    transition: var(--transition-smooth);
+    box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+}
+
+/* Header Sidebar & Jam */
+.sidebar-header {
+    padding: 30px 25px;
+    text-align: center;
+}
+
+.clock-box {
+    background: rgba(255,255,255,0.1);
+    padding: 10px;
+    border-radius: 12px;
+    margin-top: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Logo */
+.sidebar-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 4px;
+}
+
+.sidebar-header h2 {
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+    color: var(--white);
+}
+
+/* Navigasi */
+.nav-list { list-style: none; padding: 10px; }
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    border-radius: 12px;
+    margin-bottom: 5px;
+    transition: var(--transition-smooth);
+}
+
+.nav-link:hover, .nav-link.active {
+    background: rgba(255,255,255,0.15);
+    color: var(--secondary);
+    transform: translateX(5px);
+}
+
+/* Styling Icon di Sidebar */
+.nav-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    transition: var(--transition-smooth);
+}
+
+.nav-link:hover .nav-icon, 
+.nav-link.active .nav-icon {
+    filter: invert(72%) sepia(17%) saturate(944%) hue-rotate(1deg) brightness(96%) contrast(89%);
+}
+
+/* Submenu Smooth Animation */
+.submenu {
+    max-height: 0;
+    overflow: hidden;
+    list-style: none;
+    padding-left: 45px;
+    transition: max-height 0.5s ease-out;
+    background: rgba(0,0,0,0.05);
+}
+
+.has-submenu.open .submenu {
+    max-height: 200px;
+}
+
+/* Mobile Toggle Button */
+.mobile-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1100;
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+@media (max-width: 992px) {
+    .sidebar { left: -280px; }
+    .sidebar.active { left: 0; }
+    .mobile-toggle { display: block; }
+}
+
+/* USER INFO PANEL - Global */
+.user-info-panel {
+    margin: 15px 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    transition: var(--transition-smooth);
+}
+
+.user-info-panel:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.user-info-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.user-avatar {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, var(--secondary), #b58d3a);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.user-info-details {
+    flex: 1;
+    overflow: hidden;
+}
+
+.user-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: 0.3px;
+}
+
+.user-dept {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.user-info-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(198, 160, 72, 0.5), transparent);
+    margin: 10px 0;
+}
+
+.user-info-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #2ecc71;
+    border-radius: 50%;
+    animation: pulse-status 2s infinite;
+    box-shadow: 0 0 5px #2ecc71;
+}
+
+@keyframes pulse-status {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+/* Logout link styling */
+.nav-link[onclick*="logout"] {
+    margin-top: auto;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #ff7675 !important;
+    transition: all 0.3s ease;
+}
+
+.nav-link[onclick*="logout"]:hover {
+    background: rgba(255, 118, 117, 0.15) !important;
+    color: #ff5252 !important;
+}
+
+.nav-link[onclick*="logout"] .nav-icon {
+    filter: invert(50%) sepia(85%) saturate(2000%) hue-rotate(330deg) brightness(100%) contrast(100%) !important;
+}

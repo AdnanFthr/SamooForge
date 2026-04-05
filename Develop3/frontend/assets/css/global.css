@@ -1,0 +1,181 @@
+/* GLOBAL STYLES - Modern & Responsive */
+:root {
+    --primary: #0f5c93;
+    --primary-dark: #0a4a75;
+    --secondary: #c6a048;
+    --gold-light: #f4e9c9;
+    --text-main: #2d3436;
+    --bg-body: #f0f2f5;
+    --white: #ffffff;
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-soft: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Mendaftarkan Font baru */
+@font-face {
+    font-family: 'CustomFont'; 
+    src: url('../fonts/RobotoFlex-VariableFont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'CustomFont', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+/* Container untuk Layout Sidebar + Content */
+.app-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+    margin-left: 280px; /* Sesuai lebar sidebar */
+    padding: 2rem;
+    transition: var(--transition-smooth);
+}
+
+/* Tambahkan ini di global.css agar tabel bisa digeser */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.modern-table {
+    min-width: 700px; /* Memberi ruang agar data tidak berdesakan saat di-scroll */
+}
+
+/* --- Perbaikan Mobile Global --- */
+@media (max-width: 768px) {
+    /* 1. Pastikan main-content memenuhi layar tanpa padding berlebih */
+    .main-content {
+        margin-left: 0 !important; /* Sidebar biasanya tersembunyi/overlay */
+        padding: 10px !important;
+        width: 100% !important;
+    }
+
+    /* 2. Paksa Filter Header & Body Menjadi Vertikal */
+    .filter-header {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 10px;
+    }
+
+    .filter-body {
+        display: flex !important; /* Ubah dari Grid ke Flex */
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+
+    /* 3. Input harus 100% lebar layar */
+    .filter-group {
+        width: 100% !important;
+    }
+
+    .filter-group input, 
+    .filter-group select {
+        width: 100% !important;
+        box-sizing: border-box; /* Agar padding tidak merusak lebar */
+    }
+
+    /* 4. Tombol Aksi Filter */
+    .filter-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .btn-filter, .btn-export {
+        width: 100% !important;
+        justify-content: center;
+    }
+}
+
+/* --- Penyesuaian Navigasi Mobile agar Rapi --- */
+@media (max-width: 992px) {
+    /* Membuat Bar Khusus untuk Tombol Menu agar tidak menimpa konten */
+    .mobile-navbar-tweak {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        background: var(--white);
+        border-bottom: 1px solid #ddd;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+    }
+
+    .mobile-toggle {
+        display: block !important;
+        position: fixed; /* Tetap mengambang agar mudah diakses */
+        top: 15px;      /* Jarak dari atas */
+        right: 15px;    /* PINDAH KE KANAN */
+        z-index: 1100;  /* Di atas segalanya termasuk sidebar */
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+    /* Tambahkan sedikit ruang di atas main-content agar judul tidak tertutup */
+    .main-content {
+        margin-left: 0 !important;
+        padding-top: 80px !important; /* Memberi ruang aman karena tombol ada di atas */
+    }
+
+    /* Menghilangkan margin kiri sidebar di mobile */
+    .app-wrapper {
+        flex-direction: column;
+    }
+}
+
+/* Sembunyikan tombol di desktop */
+@media (min-width: 993px) {
+    .mobile-toggle {
+        display: none !important;
+    }
+}
+
+/* Efek Card Halus */
+.card-modern {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+/* Pastikan tombol aksi di tabel punya ukuran yang seragam */
+.btn-mini {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    font-size: 14px;
+}
+
+.btn-mini:hover {
+    transform: scale(1.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}

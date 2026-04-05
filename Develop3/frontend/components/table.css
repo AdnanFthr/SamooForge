@@ -1,0 +1,143 @@
+/* Table Styling */
+.table-count { font-size: 13px; color: #666; margin-bottom: 10px; }
+
+.modern-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border: 1px solid #dee2e6;
+}
+
+.modern-table thead { background: #f8fbff; }
+.modern-table th {
+    padding: 12px 15px;
+    text-align: left;
+    color: #0f5c93;
+    font-size: 14px;
+    border-bottom: 2px solid #3c8dbc;
+}
+
+.modern-table td {
+    padding: 12px 15px;
+    font-size: 13px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+
+.status-badge-approved {
+    background: #dff9fb;
+    color: #138496;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: lowercase;
+}
+
+.btn-lihat {
+    background: #eef7ff;
+    color: #3c8dbc;
+    border: 1px solid #3c8dbc;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+/* Sort indicator styling */
+.modern-table th {
+    transition: color 0.2s ease;
+}
+
+.modern-table th:hover {
+    color: #c6a048 !important;
+    background-color: #e3f2fd;
+}
+
+.modern-table th.active-sort {
+    color: #c6a048;
+    font-weight: bold;
+}
+
+/* =========================================
+   PAGINATION STYLES
+   ========================================= */
+
+.pagination-container {
+    margin-top: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.pagination-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.pagination-info {
+    font-size: 0.85rem;
+    color: #64748b;
+    text-align: center;
+}
+
+.pagination-buttons {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pagination-btn {
+    padding: 8px 14px;
+    border: 1px solid #e2e8f0;
+    background: white;
+    color: #475569;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    min-width: 36px;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+    color: #0f5c93;
+}
+
+.pagination-btn.active {
+    background: linear-gradient(135deg, #0f5c93 0%, #1e3a5f 100%);
+    color: white;
+    border-color: #0f5c93;
+}
+
+.pagination-btn:disabled,
+.pagination-btn.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background: #f8fafc;
+}
+
+.pagination-ellipsis {
+    color: #94a3b8;
+    padding: 0 4px;
+    font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .pagination-buttons {
+        gap: 4px;
+    }
+    
+    .pagination-btn {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+}

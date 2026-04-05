@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Pengajuan Dana - V3 System</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/Logo3.png">
+    
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="../components/sidebar.css">
+    <link rel="stylesheet" href="../components/filter-data.css">
+    <link rel="stylesheet" href="../components/table.css">
+    <link rel="stylesheet" href="../components/modal.css">
+    <link rel="stylesheet" href="../components/list-request.css">
+    <link rel="stylesheet" href="../components/pd.css">
+    
+    <script src="../assets/js/config.js"></script>
+    <script>
+        const API_BASE_URL = 'http://localhost/sas-orderapps/Develop3/gateway.php/request/pd';
+    </script>
+</head>
+<body>
+
+    <button id="mobile-menu-btn" class="mobile-toggle">☰ Menu</button>
+
+    <div class="app-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../assets/images/Logo.jpg" alt="Logo SAS" class="sidebar-logo">
+                <h2>V3 SYSTEM</h2>
+                <div class="clock-box" id="real-time-clock">00:00</div>
+            </div>
+
+            <div class="user-info-panel">
+                <div class="user-info-header">
+                    <div class="user-avatar">👤</div>
+                    <div class="user-info-details">
+                        <div class="user-name" id="sidebar-user-name">Loading...</div>
+                        <div class="user-dept" id="sidebar-user-dept">Loading...</div>
+                    </div>
+                </div>
+                <div class="user-info-divider"></div>
+                <div class="user-info-status">
+                    <span class="status-dot"></span>
+                    <span>Online</span>
+                </div>
+            </div>
+
+            <nav class="nav-list">
+                <div style="text-align: center; padding: 20px; color: rgba(255,255,255,0.7);">
+                    Memuat menu...
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="action-bar">
+                <h1 style="color: var(--primary); font-size: 1.5rem;">List Pengajuan Dana (PD)</h1>
+                <button class="btn-add-request" onclick="window.location.href='create-pd.html'">
+                    <span>+</span> Buat PD Baru
+                </button>
+            </header>
+
+            <section class="filter-section">
+                <div class="filter-header">
+                    <span>▼ Filter Data Pengajuan Dana</span>
+                </div>
+                <div class="filter-body">
+                    <div class="filter-group">
+                        <label>Pencarian</label>
+                        <input type="text" class="filter-input" placeholder="Cari nomor PD atau deskripsi..." id="filter-search">
+                    </div>
+                    <div class="filter-group">
+                        <label>Status</label>
+                        <select class="filter-input" id="filter-status">
+                            <option value="">Semua Status</option>
+                            <option value="Waiting">Waiting</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Returned">Returned</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Referensi</label>
+                        <select class="filter-input" id="filter-reference">
+                            <option value="">Semua</option>
+                            <option value="with">Dengan Referensi</option>
+                            <option value="without">Tanpa Referensi</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-actions">
+                        <button class="btn btn-reset" onclick="resetFilter()">↺ Reset</button>
+                        <button class="btn btn-apply" id="btn-cari">🔍 Cari</button>
+                    </div>
+                </div>
+            </section>
+
+            <div class="table-count">Data Pengajuan Dana</div>
+
+            <div class="table-container">
+                <table class="modern-table">
+                    <thead>
+                        <tr>
+                            <th onclick="sortData('pd_no')" style="cursor:pointer">Nomor PD ↕</th>
+                            <th onclick="sortData('user_name')" style="cursor:pointer">Nama Lengkap ↕</th>
+                            <th onclick="sortData('nominal')" style="cursor:pointer">Nominal ↕</th>
+                            <th onclick="sortData('created_at')" style="cursor:pointer">Tanggal ↕</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pd-table-body">
+                        <tr>
+                            <td colspan="6" style="text-align: center; padding: 40px; color: #999;">
+                                Memuat data...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="pagination-container" class="pagination-container"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Detail PD -->
+    <div id="detailModal" class="modal-overlay">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h3>Detail Pengajuan Dana</h3>
+                <span class="close-modal" onclick="closeDetailModal()">&times;</span>
+            </div>
+            <div class="modal-body" id="detail-content">
+                <!-- Content loaded by JS -->
+            </div>
+            <div class="modal-footer" id="detail-footer">
+                <!-- Buttons loaded by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Approval -->
+    <div id="approvalModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Approval Action</h3>
+                <span class="close-modal" onclick="closeApprovalModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Aksi</label>
+                    <select class="filter-input" id="approval-action">
+                        <option value="Approve">✅ Approve</option>
+                        <option value="Return">🔄 Return</option>
+                        <option value="Reject">❌ Reject</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Remark / Catatan</label>
+                    <textarea class="filter-input" id="approval-remark" rows="4" placeholder="Masukkan catatan..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-reset" onclick="closeApprovalModal()">Batal</button>
+                <button class="btn btn-apply" onclick="submitApproval()">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Preview Attachment -->
+    <div id="attachmentModal" class="modal-overlay">
+        <div class="modal-content modal-xl">
+            <div class="modal-header">
+                <h3>Preview Attachment</h3>
+                <span class="close-modal" onclick="closeAttachmentModal()">&times;</span>
+            </div>
+            <div class="modal-body attachment-modal-body">
+                <div class="attachment-sidebar">
+                    <div class="attachment-sidebar-header">
+                        <span>📎 File Attachment</span>
+                        <span id="attachment-count">0 file</span>
+                    </div>
+                    <div class="attachment-list" id="attachment-list">
+                        <!-- List items generated by JS -->
+                    </div>
+                </div>
+                
+                <div class="attachment-preview-area">
+                    <div class="attachment-preview-container" id="attachment-preview-container">
+                        <img id="attachment-preview-img" style="display: none;">
+                        <iframe id="attachment-preview-pdf" style="display: none;"></iframe>
+                        <div id="attachment-no-preview" style="display: none;">
+                            <div class="no-preview-icon">📄</div>
+                            <p>File tidak dapat dipreview</p>
+                            <span class="no-preview-filename" id="no-preview-filename"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="attachment-nav-controls">
+                        <button class="btn-nav" onclick="prevAttachment()" id="btn-prev" title="Previous">
+                            ◀ Prev
+                        </button>
+                        <span class="attachment-counter" id="attachment-counter">1 / 1</span>
+                        <button class="btn-nav" onclick="nextAttachment()" id="btn-next" title="Next">
+                            Next ▶
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" onclick="downloadCurrentAttachment()">📥 Download File Ini</button>
+                <button class="btn btn-apply" onclick="downloadAllAttachments()">📦 Download Semua</button>
+                <button class="btn btn-reset" onclick="closeAttachmentModal()">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Alert -->
+    <div id="alertModal" class="modal-overlay">
+        <div class="modal-content modal-sm">
+            <div class="modal-header modal-header-success">
+                <h3>Notifikasi</h3>
+                <span class="close-modal" onclick="closeAlertModal()">&times;</span>
+            </div>
+            <div class="modal-body modal-body-center">
+                <div class="modal-icon modal-icon-success">✓</div>
+                <p id="alertMessage" class="modal-message">Pesan</p>
+            </div>
+            <div class="modal-footer modal-footer-center">
+                <button class="btn btn-success" onclick="closeAlertModal()">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../app.js"></script>
+    <script src="../logic/sidebar-dynamics.js"></script>
+    <script src="../logic/list-pd.js"></script>
+</body>
+</html>
