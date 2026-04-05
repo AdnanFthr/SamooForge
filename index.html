@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="id" data-lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="SamooForge">
+    <meta name="keywords" content="ERP, web developer, PHP, JavaScript, Full-stack">
+    <meta name="author" content="SamooForge">
+    <meta name="theme-color" content="#6366f1">
+    
+    <meta property="og:title" content="SamooForge">
+    <meta property="og:description" content="Solusi Mini ERP terbaik untuk bisnis Anda">
+    <meta property="og:type" content="website">
+    
+    <title>SamooForge | Innovate Your Business System</title>
+    <link rel="icon" type="image/x-icon" href="images/Logo3.png">
+    
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer">
+    <base target="_blank">
+</head>
+<body>
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo" aria-label="Home">
+                <span class="logo-bracket">&lt;</span>
+                <span class="logo-text">SamooForge</span>
+                <span class="logo-bracket">/&gt;</span>
+            </a>
+            
+            <div class="nav-right">
+                <div class="lang-switcher" id="langSwitcher">
+                    <button class="lang-btn active" data-lang="id">
+                        <span class="lang-text">ID</span>
+                    </button>
+                    <button class="lang-btn" data-lang="en">
+                        <span class="lang-text">EN</span>
+                    </button>
+                </div>
+
+                <ul class="nav-menu" id="navMenu" role="menubar">
+                    <li><a href="#home" class="nav-link active" data-i18n="nav.home">Beranda</a></li>
+                    <li><a href="#about" class="nav-link" data-i18n="nav.about">Tentang</a></li>
+                    <li><a href="#skills" class="nav-link" data-i18n="nav.skills">Keahlian</a></li>
+                    <li><a href="#pricing" class="nav-link" data-i18n="nav.pricing">Pricing</a></li>
+                    <li><a href="#experience" class="nav-link" data-i18n="nav.experience">Pengalaman</a></li>
+                    <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Kontak</a></li>
+                </ul>
+                
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <p class="hero-greeting" data-i18n="hero.greeting">Innovate Your Business System</p>
+                <h1 class="hero-title">
+                    <span class="typing-text" id="typingText"></span>
+                    <span class="cursor">|</span>
+                </h1>
+                <p class="hero-description" data-i18n="hero.description">
+                    Kelola seluruh alur kerja bisnis tanpa kerumitan sistem tradisional. 
+                    Cepat diimplementasikan, mudah digunakan, dan dirancang untuk efisiensi perusahaan mengikuti era digital.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#pricing" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i> 
+                        <span data-i18n="hero.cta.projects">Lihat Paket</span>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> 
+                        <span data-i18n="hero.cta.contact">Hubungi Kami</span>
+                    </a>
+                </div>
+                <div class="hero-socials">
+                    <a href="https://adnanfthr.github.io/dev-portfolio/" class="social-link" target="_blank" rel="noopener">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                    <a href="https://id.linkedin.com/in/adnanfthr" class="social-link" target="_blank" rel="noopener">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="mailto:adnanfthr@gmail.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <div class="code-window">
+                    <div class="window-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span class="window-title">samoonier.js</span>
+                    </div>
+                    <div class="window-body">
+                        <pre><code>
+<span class="code-keyword">const</span> <span class="code-variable">company</span> = {
+    <span class="code-property">nama</span>: <span class="code-string">"SamooForge"</span>,
+    <span class="code-property">role</span>: <span class="code-string">"ERP Solutions"</span>,
+    <span class="code-property">founded</span>: <span class="code-number">2025</span>,
+    <span class="code-property">specialty</span>: <span class="code-string">"Custom ERP Systems"</span>,
+    <span class="code-property">ready</span>: <span class="code-boolean">true</span>
+};
+                        </code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <span class="mouse"><span class="wheel"></span></span>
+            <p data-i18n="hero.scroll">Scroll ke bawah</p>
+        </div>
+    </section>
+
+    <section id="about" class="about section">
+        <div class="container">
+            <header class="section-header">
+                <span class="section-tag" data-i18n="about.tag">Tentang</span>
+            </header>
+            
+            <div class="about-content">
+                <div class="about-header">
+                    <h2>Innovate Your Business System</h2>
+                    <p>Membangun solusi digital yang tangguh melalui arsitektur modern dan kode yang terstruktur. Kami membantu bisnis Anda naik kelas dengan sistem yang sepenuhnya kustom.</p>
+                </div>
+
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <div class="icon">⚙️</div>
+                        <h3>Microservices Architecture</h3>
+                        <p>Kami memecah sistem menjadi layanan-layanan kecil yang mandiri. Ini memastikan <strong>skalabilitas tinggi</strong> dan sistem yang tetap stabil meskipun salah satu komponen sedang diperbarui.</p>
+                    </div>
+
+                    <div class="tech-card">
+                        <div class="icon">🏗️</div>
+                        <h3>MVC (Model View Controller)</h3>
+                        <p>Implementasi pola desain MVC menjamin pemisahan logika bisnis dan tampilan. Hasilnya? Kode yang <strong>terorganisir, mudah dirawat</strong>, dan pengembangan fitur yang jauh lebih cepat.</p>
+                    </div>
+
+                    <div class="tech-card highlight">
+                        <div class="icon">🚀</div>
+                        <h3>All-Custom & ERP Scale</h3>
+                        <p>Dari landing page hingga sistem kompleks setara <strong>ERP</strong>. Kami membangun fitur inventaris, keuangan, request pengajuan, yang terintegrasi secara kustom sesuai alur kerja bisnis Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills section">
+        <div class="container">
+            <header class="section-header">
+                <span class="section-tag" data-i18n="skills.tag">Keahlian</span>
+                <h2 class="section-title" data-i18n="skills.title">Tech Stack Kami</h2>
+            </header>
+            
+            <div class="skills-wrapper">
+                <div class="skill-category">
+                    <h3 class="category-title"><i class="fas fa-code"></i> Core Development</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item modern-card" title="HTML5">
+                            <img src="./images/html.png" alt="HTML5" class="skill-icon">
+                            <span>HTML</span>
+                        </div>
+                        <div class="skill-item modern-card" title="CSS3">
+                            <img src="./images/css-3.png" alt="CSS3" class="skill-icon">
+                            <span>CSS</span>
+                        </div>
+                        <div class="skill-item modern-card" title="JavaScript">
+                            <img src="./images/js.png" alt="JavaScript" class="skill-icon">
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item modern-card" title="PHP">
+                            <img src="./images/php.png" alt="PHP" class="skill-icon">
+                            <span>PHP</span>
+                        </div>
+                        <div class="skill-item modern-card" title="MySQL Database">
+                            <img src="./images/database.png" alt="MySQL Database" class="skill-icon">
+                            <span>MySQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing section">
+        <div class="container">
+            <header class="section-header">
+                <span class="section-tag" data-i18n="pricing.tag">Pricing</span>
+                <h2 class="section-title" data-i18n="pricing.title">Paket Layanan</h2>
+            </header>
+
+            <p class="pricing-intro" data-i18n="pricing.intro">
+                Solusi Mini ERP terbaik untuk bisnis Anda. Pilih paket yang sesuai dengan kebutuhan perusahaan Anda.
+                Harga dapat disesuaikan berdasarkan custom request fitur tambahan.
+            </p>
+
+            <div class="pricing-grid">
+                <!-- Bronze Package -->
+                <article class="pricing-card">
+                    <div class="pricing-header">
+                        <div class="pricing-badge bronze">Bronze</div>
+                        <div class="pricing-price">
+                            <span class="currency">Rp</span>
+                            <span class="amount-range">50 - 65</span>
+                            <span class="unit">Juta</span>
+                        </div>
+                    </div>
+                    <div class="pricing-body">
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> <span data-i18n="pricing.bronze.1">Auth (Login/Register System)</span></li>
+                            <li><i class="fas fa-check"></i> <span data-i18n="pricing.bronze.2">User Management</span></li>
+                            <li><i class="fas fa-check"></i> <span data-i18n="pricing.bronze.3">Request System</span></li>
+                            <li><i class="fas fa-check"></i> <span data-i18n="pricing.bronze.4">Approval Workflow</span></li>
+                            <li><i class="fas fa-check"></i> <span data-i18n="pricing.bronze.5">Basic UI</span></li>
+                            <li><i class="fas fa-check"></i> <span data-i18n="pricing.bronze.6">Basic Database</span></li>
+                        </ul>
+                        <a href="#contact" class="btn btn-pricing" data-i18n="pricing.cta">Pilih Paket</a>
+                    </div>
+                </article>
+
+                <!-- Silver Package -->
+                <article class="pricing-card featured">
+                    <div class="pricing-header">
+                        <div class="pricing-badge silver">Silver</div>
+                        <div class="pricing-price">
+                            <span class="currency">Rp</span>
+                            <span class="amount-range">65 - 85</span>
+                            <span class="unit">Juta</span>
+                        </div>
+                        <div class="popular-badge" data-i18n="pricing.popular">Populer</div>
+                    </div>
+                    <div class="pricing-body">
+                        <p class="pricing-include" data-i18n="pricing.include">Semua fitur Bronze +</p>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> <span data-i18n="pricing.silver.1">Request + Item Detail</span></li>
+                            <li><i class="fas fa-check"></i> <span data-i18n="pricing.silver.2">Library (PDF Generator & Attachment Image/PDF)</span></li>
+                            <li><i class="fas fa-check"></i> <span data-i18n="pricing.silver.3">Master Data pada Database</span></li>
+                            <li><i class="fas fa-check"></i> <span data-i18n="pricing.silver.4">Permission System dengan Banyak Role Users</span></li>
+                        </ul>
+                        <a href="#contact" class="btn btn-pricing btn-primary" data-i18n="pricing.cta">Pilih Paket</a>
+                    </div>
+                </article>
+
+                <!-- Gold Package -->
+                <article class="pricing-card">
+                    <div class="pricing-header">
+                        <div class="pricing-badge gold">Gold</div>
+                        <div class="pricing-price">
+                            <span class="currency">Rp</span>
+                            <span class="amount-range">85+</span>
+                            <span class="unit">Juta</span>
+                        </div>
+                    </div>
+                    <div class="pricing-body">
+                        <p class="pricing-include" data-i18n="pricing.include">Semua fitur Silver +</p>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> <span data-i18n="pricing.gold.1">VPS Setup & Management</span></li>
+                            <li><i class="fas fa-check"></i> <span data-i18n="pricing.gold.2">Support Komunikasi Vendor VPS</span></li>
+                            <li><i class="fas fa-check"></i> <span data-i18n="pricing.gold.3">Free VPS 1 Tahun</span></li>
+                            <li><i class="fas fa-star"></i> <span data-i18n="pricing.gold.4">Priority Support 24/7</span></li>
+                        </ul>
+                        <a href="#contact" class="btn btn-pricing" data-i18n="pricing.cta">Pilih Paket</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- TABEL PERBANDINGAN FITUR -->
+            <div class="comparison-table-wrapper">
+                <h3 class="comparison-title" data-i18n="pricing.comparison.title">Fitur Pricing</h3>
+                <div class="comparison-table-container">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th class="feature-col" data-i18n="pricing.comparison.feature">Fitur</th>
+                                <th class="bronze-col">
+                                    <span class="package-name bronze">Bronze</span>
+                                </th>
+                                <th class="silver-col">
+                                    <span class="package-name silver">Silver</span>
+                                </th>
+                                <th class="gold-col">
+                                    <span class="package-name gold">Gold</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="feature-name" data-i18n="pricing.comparison.auth">Auth System (Login/Register)</td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name" data-i18n="pricing.comparison.user_mgmt">User Management</td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name" data-i18n="pricing.comparison.request">Request System</td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name" data-i18n="pricing.comparison.approval">Approval Workflow</td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name" data-i18n="pricing.comparison.basic_ui">Basic UI</td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name" data-i18n="pricing.comparison.basic_db">Basic Database</td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                            </tr>
+                            <tr class="separator">
+                                <td colspan="4"></td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name" data-i18n="pricing.comparison.item_detail">Request + Item Detail</td>
+                                <td class="cross"><i class="fas fa-times"></i></td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name" data-i18n="pricing.comparison.pdf_gen">PDF Generator & Attachment</td>
+                                <td class="cross"><i class="fas fa-times"></i></td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name" data-i18n="pricing.comparison.master_data">Master Data Database</td>
+                                <td class="cross"><i class="fas fa-times"></i></td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name" data-i18n="pricing.comparison.permission">Multi-Role Permission System</td>
+                                <td class="cross"><i class="fas fa-times"></i></td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                            </tr>
+                            <tr class="separator">
+                                <td colspan="4"></td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name" data-i18n="pricing.comparison.vps">VPS Setup & Management</td>
+                                <td class="cross"><i class="fas fa-times"></i></td>
+                                <td class="cross"><i class="fas fa-times"></i></td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name" data-i18n="pricing.comparison.vps_support">Support Komunikasi Vendor VPS</td>
+                                <td class="cross"><i class="fas fa-times"></i></td>
+                                <td class="cross"><i class="fas fa-times"></i></td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name" data-i18n="pricing.comparison.free_vps">Free VPS 1 Tahun</td>
+                                <td class="cross"><i class="fas fa-times"></i></td>
+                                <td class="cross"><i class="fas fa-times"></i></td>
+                                <td class="check"><i class="fas fa-check"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="feature-name" data-i18n="pricing.comparison.priority">Priority Support 24/7</td>
+                                <td class="cross"><i class="fas fa-times"></i></td>
+                                <td class="cross"><i class="fas fa-times"></i></td>
+                                <td class="star"><i class="fas fa-star"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="comparison-note" data-i18n="pricing.comparison.note">
+                    <i class="fas fa-info-circle"></i>
+                    Harga final dapat bervariasi tergantung pada custom request fitur tambahan dari klien. 
+                    Hubungi kami untuk konsultasi dan penawaran khusus.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pada section experience, tambahkan button setelah role-description -->
+    <section id="experience" class="experience section">
+        <div class="container">
+            <header class="section-header">
+                <span class="section-tag" data-i18n="exp.tag">Pengalaman</span>
+                <h2 class="section-title" data-i18n="exp.title">Karir Development</h2>
+            </header>
+            
+            <div class="experience-content">
+                <article class="current-role">
+                    <div class="role-badge" data-i18n="exp.current">Current Role</div>
+                    <h3 data-i18n="exp.role">Backend Developer</h3>
+                    <p class="company">PT. Sinergi Anugrah Services</p>
+                    <p class="period">2025 - <span data-i18n="exp.now">Sekarang</span></p>
+                    
+                    <div class="role-description">
+                        <p data-i18n="exp.desc">
+                            Sedang mengembangkan <strong>OrderApps SAS</strong>, sebuah aplikasi 
+                            order management system yang digunakan untuk mengelola proses order barang dan list inventory, 
+                            yang akan berkembang menjadi sebuah system ERP untuk perusahaan.
+                            Meliputi berbagai fitur:
+                        </p>
+                        <ul>
+                            <li data-i18n="exp.feature.1">Develop backend menggunakan PHP & Database management dengan MySQL</li>
+                            <li data-i18n="exp.feature.2">Integrasi frontend dengan HTML, CSS, JavaScript</li>
+                            <li data-i18n="exp.feature.3">Fitur CRUD (Create, Read, Update, Delete), Approver, Generate PO, Generate PDF</li>
+                            <li data-i18n="exp.feature.4">Optimasi performa di browser desktop dan smartphone</li>
+                        </ul>
+                    </div>
+
+                    <!-- TAMBAHKAN BUTTON DI SINI -->
+                    <div class="experience-actions">
+                        <a href="./Develop3/index.html" class="btn btn-experience" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span data-i18n="exp.view_details">Lihat Detail Proyek</span>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact section">
+        <div class="container">
+            <header class="section-header">
+                <span class="section-tag" data-i18n="contact.tag">Kontak</span>
+                <h2 class="section-title" data-i18n="contact.title">Mari Berkolaborasi</h2>
+            </header>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-detail">
+                            <h4 data-i18n="contact.email">Email</h4>
+                            <p><a href="mailto:adnanfthr@gmail.com">adnanfthr@gmail.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-detail">
+                            <h4 data-i18n="contact.location">Lokasi</h4>
+                            <p data-i18n="contact.country">Indonesia</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-building"></i></div>
+                        <div class="contact-detail">
+                            <h4 data-i18n="contact.company">Perusahaan</h4>
+                            <p>SamooForge</p>
+                            <small data-i18n="contact.since">Since 2025</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contactForm" novalidate>
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required placeholder=" ">
+                        <label for="name" data-i18n="form.name">Nama</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required placeholder=" ">
+                        <label for="email" data-i18n="form.email">Email</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
+                        <label for="message" data-i18n="form.message">Pesan</label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-paper-plane"></i> 
+                        <span data-i18n="form.send">Kirim Pesan</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#home" class="nav-logo">
+                        <span class="logo-bracket">&lt;</span>
+                        <span class="logo-text">SamooForge</span>
+                        <span class="logo-bracket">/&gt;</span>
+                    </a>
+                    <p>Adnan Fathurizky | Dev Since 2025</p>
+                </div>
+                
+                <div class="footer-socials">
+                    <a href="https://adnanfthr.github.io/dev-portfolio/" class="social-link" target="_blank" rel="noopener">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                    <a href="https://id.linkedin.com/in/adnanfthr" class="social-link" target="_blank" rel="noopener">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="mailto:adnanfthr@gmail.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy;2025 SamooForge | 
+                    <span data-i18n="footer.made">Innovate Your Business System & Make a Better Future</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="./js/i18n.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/animations.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>

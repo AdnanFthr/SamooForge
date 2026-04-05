@@ -1,0 +1,125 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "skills": "Skills",
+        "pricing": "Pricing",
+        "experience": "Experience",
+        "contact": "Contact"
+    },
+    "hero": {
+        "greeting": "Innovate Your Business System",
+        "description": "Manage your entire business workflow without the complexity of traditional systems. Quick to implement, easy to use, and specifically designed for enterprise efficiency in the digital era.",
+        "cta": {
+            "projects": "View Packages",
+            "contact": "Contact Us"
+        },
+        "scroll": "Scroll down"
+    },
+    "typing": [
+        "Full-stack Developer",
+        "Backend Developer",
+        "Web Developer"
+    ],
+    "about": {
+        "tag": "About Us",
+        "title": "Innovate Your Business System",
+        "subtitle": "Building robust digital solutions through modern architecture and structured code. We help your business level up with fully customized systems.",
+        "microservices": {
+            "title": "Microservices Architecture",
+            "desc": "We break down systems into small, independent services. This ensures <strong>high scalability</strong> and systems that remain stable even when one component is being updated."
+        },
+        "mvc": {
+            "title": "MVC (Model View Controller)",
+            "desc": "MVC design pattern implementation guarantees separation of business logic and presentation. The result? <strong>Organized, maintainable code</strong> and much faster feature development."
+        },
+        "custom": {
+            "title": "All-Custom & ERP Scale",
+            "desc": "From landing pages to complex <strong>ERP-class</strong> systems. We build inventory, finance, and request submission features, fully integrated according to your business workflow."
+        }
+    },
+    "skills": {
+        "tag": "Skills",
+        "title": "Our Tech Stack"
+    },
+    "pricing": {
+        "tag": "Pricing",
+        "title": "Packages Services",
+        "intro": "The best Mini ERP solution for your business. Choose the package that suits your company's needs. Prices can be adjusted based on additional custom feature requests.",
+        "popular": "Popular",
+        "include": "All Bronze features +",
+        "cta": "Select Package",
+        "bronze": {
+            "1": "Auth (Login/Register System)",
+            "2": "User Management",
+            "3": "Request System",
+            "4": "Approval Workflow",
+            "5": "Basic UI",
+            "6": "Basic Database"
+        },
+        "silver": {
+            "1": "Request + Item Detail",
+            "2": "Library (PDF Generator & Attachment Image/PDF)",
+            "3": "Master Data on Database",
+            "4": "Permission System with Multiple User Roles"
+        },
+        "gold": {
+            "1": "VPS Setup & Management",
+            "2": "VPS Vendor Communication Support",
+            "3": "Free VPS 1 Year",
+            "4": "Priority Support 24/7"
+        },
+        "comparison": {
+            "title": "Pricing Features",
+            "feature": "Feature",
+            "auth": "Auth System (Login/Register)",
+            "user_mgmt": "User Management",
+            "request": "Request System",
+            "approval": "Approval Workflow",
+            "basic_ui": "Basic UI",
+            "basic_db": "Basic Database",
+            "item_detail": "Request + Item Detail",
+            "pdf_gen": "PDF Generator & Attachment",
+            "master_data": "Master Data Database",
+            "permission": "Multi-Role Permission System",
+            "vps": "VPS Setup & Management",
+            "vps_support": "VPS Vendor Communication Support",
+            "free_vps": "Free VPS 1 Year",
+            "priority": "Priority Support 24/7",
+            "note": "Final prices may vary depending on additional custom feature requests from clients. Contact us for consultation and special offers."
+        }
+    },
+    "exp": {
+        "tag": "Experience",
+        "title": "Development Career",
+        "current": "Current Role",
+        "role": "Backend Developer",
+        "now": "Present",
+        "desc": "Currently developing <strong>OrderApps SAS</strong>, an order management system application used to manage ordering processes and inventory lists, which will evolve into an ERP system for the company. Includes various features:",
+        "feature": {
+            "1": "Develop backend using PHP & Database management with MySQL",
+            "2": "Frontend integration with HTML, CSS, JavaScript",
+            "3": "CRUD features (Create, Read, Update, Delete), Approver, Generate PO, Generate PDF",
+            "4": "Performance optimization on desktop and smartphone browsers"
+        },
+        "view_details": "View Project Details"
+    },
+    "contact": {
+        "tag": "Contact",
+        "title": "Let's Collaborate",
+        "email": "Email",
+        "location": "Location",
+        "country": "Indonesia",
+        "company": "Company",
+        "since": "Since 2025"
+    },
+    "form": {
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+        "send": "Send Message"
+    },
+    "footer": {
+        "made": "Innovate Your Business System & Make a Better Future"
+    }
+}

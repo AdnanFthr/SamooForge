@@ -1,0 +1,125 @@
+{
+    "nav": {
+        "home": "Beranda",
+        "about": "Tentang",
+        "skills": "Keahlian",
+        "pricing": "Pricing",
+        "experience": "Pengalaman",
+        "contact": "Kontak"
+    },
+    "hero": {
+        "greeting": "Innovate Your Business System",
+        "description": "Kelola seluruh alur kerja bisnis tanpa kerumitan sistem tradisional. Cepat diimplementasikan, mudah digunakan, dan dirancang untuk efisiensi perusahaan mengikuti era digital.",
+        "cta": {
+            "projects": "Lihat Paket",
+            "contact": "Hubungi Kami"
+        },
+        "scroll": "Scroll ke bawah"
+    },
+    "typing": [
+        "Full-stack Developer",
+        "Backend Developer",
+        "Web Developer"
+    ],
+    "about": {
+        "tag": "Tentang",
+        "title": "Innovate Your Business System",
+        "subtitle": "Membangun solusi digital yang tangguh melalui arsitektur modern dan kode yang terstruktur. Kami membantu bisnis Anda naik kelas dengan sistem yang sepenuhnya kustom.",
+        "microservices": {
+            "title": "Microservices Architecture",
+            "desc": "Kami memecah sistem menjadi layanan-layanan kecil yang mandiri. Ini memastikan <strong>skalabilitas tinggi</strong> dan sistem yang tetap stabil meskipun salah satu komponen sedang diperbarui."
+        },
+        "mvc": {
+            "title": "MVC (Model View Controller)",
+            "desc": "Implementasi pola desain MVC menjamin pemisahan logika bisnis dan tampilan. Hasilnya? Kode yang <strong>terorganisir, mudah dirawat</strong>, dan pengembangan fitur yang jauh lebih cepat."
+        },
+        "custom": {
+            "title": "All-Custom & ERP Scale",
+            "desc": "Dari landing page hingga sistem kompleks kelas <strong>ERP</strong>. Kami membangun fitur inventaris, keuangan, dan pengajuan request yang terintegrasi secara kustom sesuai alur kerja bisnis Anda."
+        }
+    },
+    "skills": {
+        "tag": "Keahlian",
+        "title": "Tech Stack Kami"
+    },
+    "pricing": {
+        "tag": "Pricing",
+        "title": "Paket Layanan",
+        "intro": "Solusi Mini ERP terbaik untuk bisnis Anda. Pilih paket yang sesuai dengan kebutuhan perusahaan Anda. Harga dapat disesuaikan berdasarkan custom request fitur tambahan.",
+        "popular": "Populer",
+        "include": "Semua fitur Bronze +",
+        "cta": "Pilih Paket",
+        "bronze": {
+            "1": "Auth (Login/Register System)",
+            "2": "User Management",
+            "3": "Request System",
+            "4": "Approval Workflow",
+            "5": "Basic UI",
+            "6": "Basic Database"
+        },
+        "silver": {
+            "1": "Request + Item Detail",
+            "2": "Library (PDF Generator & Attachment Image/PDF)",
+            "3": "Master Data pada Database",
+            "4": "Permission System dengan Banyak Role Users"
+        },
+        "gold": {
+            "1": "VPS Setup & Management",
+            "2": "Support Komunikasi Vendor VPS",
+            "3": "Free VPS 1 Tahun",
+            "4": "Priority Support 24/7"
+        },
+        "comparison": {
+            "title": "Fitur Pricing",
+            "feature": "Fitur",
+            "auth": "Auth System (Login/Register)",
+            "user_mgmt": "User Management",
+            "request": "Request System",
+            "approval": "Approval Workflow",
+            "basic_ui": "Basic UI",
+            "basic_db": "Basic Database",
+            "item_detail": "Request + Item Detail",
+            "pdf_gen": "PDF Generator & Attachment",
+            "master_data": "Master Data Database",
+            "permission": "Multi-Role Permission System",
+            "vps": "VPS Setup & Management",
+            "vps_support": "Support Komunikasi Vendor VPS",
+            "free_vps": "Free VPS 1 Tahun",
+            "priority": "Priority Support 24/7",
+            "note": "Harga final dapat bervariasi tergantung pada custom request fitur tambahan dari klien. Hubungi kami untuk konsultasi dan penawaran khusus."
+        }
+    },
+    "exp": {
+        "tag": "Pengalaman",
+        "title": "Karir Development",
+        "current": "Current Role",
+        "role": "Backend Developer",
+        "now": "Sekarang",
+        "desc": "Sedang mengembangkan <strong>OrderApps SAS</strong>, sebuah aplikasi order management system yang digunakan untuk mengelola proses order barang dan list inventory, yang akan berkembang menjadi sebuah system ERP untuk perusahaan. Meliputi berbagai fitur:",
+        "feature": {
+            "1": "Develop backend menggunakan PHP & Database management dengan MySQL",
+            "2": "Integrasi frontend dengan HTML, CSS, JavaScript",
+            "3": "Fitur CRUD (Create, Read, Update, Delete), Approver, Generate PO, Generate PDF",
+            "4": "Optimasi performa di browser desktop dan smartphone"
+        },
+        "view_details": "Lihat Detail Proyek"
+    },
+    "contact": {
+        "tag": "Kontak",
+        "title": "Mari Berkolaborasi",
+        "email": "Email",
+        "location": "Lokasi",
+        "country": "Indonesia",
+        "company": "Perusahaan",
+        "since": "Since 2025"
+    },
+    "form": {
+        "name": "Nama",
+        "email": "Email",
+        "message": "Pesan",
+        "send": "Kirim Pesan"
+    },
+    "footer": {
+        "made": "Innovate Your Business System & Make a Better Future"
+    }
+}
