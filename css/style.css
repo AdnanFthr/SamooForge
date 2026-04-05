@@ -316,7 +316,7 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 6rem 0 4rem;
+    padding: 8rem 0 4rem; /* Increased padding-top to avoid navbar overlap */
     position: relative;
     overflow: hidden;
     background: var(--gradient-hero);
@@ -1095,12 +1095,15 @@ img {
     box-shadow: 0 10px 30px rgba(255, 200, 30, 0.4);
 }
 
-/* Comparison Table */
+/* ============================================
+   COMPARISON TABLE - OPTIMIZED FOR ALL SCREENS
+   ============================================ */
 .comparison-table-wrapper {
     margin-top: 5rem;
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
+    padding: 0 1rem;
 }
 
 .comparison-title {
@@ -1124,6 +1127,7 @@ img {
     width: 100%;
     border-collapse: collapse;
     font-size: 0.95rem;
+    table-layout: auto;
 }
 
 .comparison-table thead th {
@@ -1703,7 +1707,7 @@ img {
 }
 
 /* ============================================
-   RESPONSIVE DESIGN - MOBILE FIXES
+   RESPONSIVE DESIGN - MOBILE OPTIMIZATIONS
    ============================================ */
 
 /* Tablet (1024px and down) */
@@ -1728,6 +1732,7 @@ img {
 
     .hero-image {
         order: -1;
+        margin-top: 2rem; /* Add space below navbar */
     }
 
     .code-window {
@@ -1767,9 +1772,37 @@ img {
     .pricing-card.featured:hover {
         transform: scale(1.02) translateY(-10px);
     }
+    
+    /* Table adjustments for tablet */
+    .comparison-table-wrapper {
+        padding: 0 0.5rem;
+    }
+    
+    .comparison-table thead th {
+        padding: 1rem 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .comparison-table thead th.feature-col {
+        font-size: 0.75rem;
+        width: 40%;
+    }
+    
+    .comparison-table tbody td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .comparison-table tbody td.feature-name {
+        padding-left: 1rem;
+    }
+    
+    .package-name {
+        font-size: 0.95rem;
+    }
 }
 
-/* Mobile (768px and down) - MAIN FIXES */
+/* Mobile (768px and down) */
 @media (max-width: 768px) {
     :root {
         --section-padding: 4rem 0;
@@ -1777,11 +1810,8 @@ img {
 
     .hero {
         min-height: 100vh;
-        min-height: 100dvh; /* Dynamic viewport height for mobile browsers */
-        padding: 5rem 0 2rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
+        min-height: 100dvh;
+        padding: 7rem 0 2rem; /* Increased padding for navbar */
     }
 
     .hero-content {
@@ -1804,6 +1834,7 @@ img {
     .hero-image {
         order: 1;
         margin-bottom: 0.5rem;
+        margin-top: 1rem;
     }
 
     .hero-title {
@@ -1856,14 +1887,14 @@ img {
 
     /* Code window mobile optimization */
     .code-window {
-        max-width: 280px;
+        max-width: 320px;
         transform: none;
         margin: 0 auto;
-        font-size: 0.75rem;
+        font-size: 0.8rem;
     }
 
     .window-header {
-        padding: 0.5rem 0.75rem;
+        padding: 0.6rem 0.75rem;
     }
 
     .window-body {
@@ -1875,7 +1906,7 @@ img {
         height: 10px;
     }
 
-    /* Scroll indicator - MOVED TO STATIC POSITION (FIX OVERLAP) */
+    /* Scroll indicator fix */
     .scroll-indicator {
         position: relative;
         bottom: auto;
@@ -1985,295 +2016,515 @@ img {
     .pricing-price .amount-range {
         font-size: 2rem;
     }
+
+/* ============================================
+   COMPARISON TABLE - FIXED FOR ALL SCREENS
+   ============================================ */
+.comparison-table-wrapper {
+    margin-top: 5rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1rem;
+}
+
+.comparison-title {
+    text-align: center;
+    font-size: 1.75rem;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.comparison-table-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(10px);
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    table-layout: fixed;
+}
+
+.comparison-table thead th {
+    background: rgba(255, 200, 30, 0.08);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    border-bottom: 2px solid var(--border);
+    color: var(--text-primary);
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.comparison-table thead th.feature-col {
+    text-align: left;
+    width: 40%;
+    color: var(--secondary-deep);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+}
+
+.comparison-table thead th.bronze-col,
+.comparison-table thead th.silver-col,
+.comparison-table thead th.gold-col {
+    width: 20%;
+    vertical-align: middle;
+}
+
+.package-name {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.package-name.bronze {
+    color: #cd7f32;
+    text-shadow: 0 0 10px rgba(205, 127, 50, 0.3);
+}
+
+.package-name.silver {
+    color: #8A8A8A;
+    text-shadow: 0 0 10px rgba(138, 138, 138, 0.3);
+}
+
+.package-name.gold {
+    color: var(--accent-warm);
+    text-shadow: 0 0 10px rgba(255, 200, 30, 0.4);
+}
+
+.comparison-table tbody tr {
+    transition: var(--transition);
+}
+
+.comparison-table tbody tr:hover {
+    background: rgba(180, 211, 217, 0.08);
+}
+
+.comparison-table tbody td {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+    vertical-align: middle;
+}
+
+.comparison-table tbody td.feature-name {
+    text-align: left;
+    padding-left: 1.5rem;
+    font-weight: 500;
+    vertical-align: middle;
+}
+
+.comparison-table tbody td.check {
+    color: var(--secondary-deep);
+    font-size: 1.1rem;
+    text-shadow: 0 0 10px rgba(115, 165, 202, 0.3);
+}
+
+.comparison-table tbody td.cross {
+    color: var(--text-muted);
+    font-size: 1rem;
+    opacity: 0.5;
+}
+
+.comparison-table tbody td.star {
+    color: var(--accent);
+    font-size: 1.1rem;
+    text-shadow: 0 0 10px rgba(255, 200, 30, 0.4);
+}
+
+.comparison-table tbody tr.separator td {
+    padding: 0.5rem;
+    border-bottom: 2px solid var(--border);
+    background: rgba(255, 200, 30, 0.05);
+}
+
+.comparison-note {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-style: italic;
+    padding: 1rem;
+    background: rgba(255, 200, 30, 0.08);
+    border-radius: 12px;
+    border: 1px solid var(--border-accent);
+}
+
+.comparison-note i {
+    color: var(--accent);
+    margin-right: 0.5rem;
+}
+
+/* ============================================
+   COMPARISON TABLE - TABLET (1024px and down)
+   ============================================ */
+@media (max-width: 1024px) {
+    .comparison-table-wrapper {
+        padding: 0 0.5rem;
+    }
     
+    .comparison-table thead th {
+        padding: 1rem 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .comparison-table thead th.feature-col {
+        font-size: 0.75rem;
+        width: 40%;
+    }
+    
+    .comparison-table thead th.bronze-col,
+    .comparison-table thead th.silver-col,
+    .comparison-table thead th.gold-col {
+        width: 20%;
+    }
+    
+    .comparison-table tbody td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .comparison-table tbody td.feature-name {
+        padding-left: 1rem;
+    }
+    
+    .package-name {
+        font-size: 0.95rem;
+    }
+}
+
+/* ============================================
+   COMPARISON TABLE - MOBILE (768px and down)
+   ============================================ */
+@media (max-width: 768px) {
     .comparison-table-wrapper {
         margin-top: 3rem;
-        padding: 0 1rem;
+        padding: 0 0.5rem;
     }
 
     .comparison-title {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
     }
 
     .comparison-table-container {
-        overflow-x: auto;
         border-radius: 12px;
     }
 
     .comparison-table {
-        min-width: 600px;
+        table-layout: fixed;
+        width: 100%;
+        font-size: 0.8rem;
     }
 
     .comparison-table thead th {
-        padding: 1rem 0.5rem;
-        font-size: 0.85rem;
+        padding: 0.75rem 0.25rem;
+        font-size: 0.7rem;
+        line-height: 1.2;
+        vertical-align: middle;
     }
 
-    .comparison-table tbody td {
-        padding: 0.75rem 0.5rem;
-        font-size: 0.85rem;
+    .comparison-table thead th.feature-col {
+        width: 45%;
+        font-size: 0.65rem;
+        padding-left: 0.5rem;
+        letter-spacing: 0.5px;
+        text-align: left;
     }
 
-    .comparison-table tbody td.feature-name {
-        padding-left: 1rem;
+    .comparison-table thead th.bronze-col,
+    .comparison-table thead th.silver-col,
+    .comparison-table thead th.gold-col {
+        width: 18.33%;
+        text-align: center;
     }
 
     .package-name {
-        font-size: 0.9rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.3px;
+        margin-bottom: 0.1rem;
     }
 
-    .current-role {
-        padding: 2rem;
-    }
-
-    .back-to-top {
-        bottom: 2rem;
-        right: 1rem;
-    }
-
-    .experience-actions {
-        justify-content: center;
-    }
-    
-    .btn-experience {
-        width: 100%;
-        justify-content: center;
-        padding: 0.875rem 1.5rem;
+    .comparison-table tbody td {
+        padding: 0.6rem 0.25rem;
         font-size: 0.8rem;
-    }
-}
-
-/* Small Mobile (480px and down) */
-@media (max-width: 480px) {
-    .hero {
-        padding: 4.5rem 0 1.5rem;
+        vertical-align: middle;
+        text-align: center;
     }
 
-    .hero-content {
-        gap: 1rem;
-    }
-
-    .hero-title {
-        font-size: 1.5rem;
-        margin-bottom: 0.75rem;
-    }
-
-    .hero-greeting {
+    .comparison-table tbody td.feature-name {
         font-size: 0.75rem;
+        padding: 0.6rem 0.25rem;
+        padding-left: 0.5rem;
+        line-height: 1.3;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        text-align: left;
+        vertical-align: middle;
     }
 
-    .hero-description {
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
-        line-height: 1.5;
+    .comparison-table tbody td.check,
+    .comparison-table tbody td.cross,
+    .comparison-table tbody td.star {
+        font-size: 0.85rem;
+        padding: 0.6rem 0.1rem;
+        text-align: center;
+        vertical-align: middle;
     }
 
-    .hero-buttons {
-        max-width: 260px;
-        margin-bottom: 1.25rem;
-        gap: 0.6rem;
+    .comparison-table tbody tr.separator td {
+        padding: 0.3rem;
     }
 
-    .hero-buttons .btn {
-        padding: 0.75rem 1rem;
+    .comparison-note {
         font-size: 0.75rem;
-    }
-
-    .hero-socials {
-        gap: 0.6rem;
-    }
-
-    .social-link {
-        width: 36px;
-        height: 36px;
-        font-size: 0.9rem;
-    }
-
-    .code-window {
-        max-width: 260px;
-        font-size: 0.7rem;
-    }
-
-    .window-body {
         padding: 0.75rem;
-    }
-
-    .window-body pre {
-        font-size: 0.7rem;
-        line-height: 1.6;
-    }
-
-    .scroll-indicator {
         margin-top: 0.75rem;
     }
+}
 
-    .scroll-indicator p {
-        font-size: 0.65rem;
+/* ============================================
+   COMPARISON TABLE - SMALL MOBILE (480px and down)
+   ============================================ */
+@media (max-width: 480px) {
+    .comparison-table-wrapper {
+        padding: 0 0.25rem;
     }
-
-    .nav-container {
-        padding-top: 3rem;
-    }
-
-    .nav-logo {
+    
+    .comparison-title {
         font-size: 1.1rem;
     }
-
-    .logo-text {
-        font-size: 1rem;
+    
+    .comparison-table {
+        font-size: 0.75rem;
     }
-
-    .lang-switcher {
-        padding: 0.2rem;
-        top: 0.4rem;
-    }
-
-    .lang-btn {
-        padding: 0.3rem 0.5rem;
-        font-size: 0.7rem;
-    }
-
-    .nav-toggle {
-        margin-top: 1.5rem;
-    }
-
-    .btn {
-        padding: 0.75rem 1.25rem;
-        font-size: 0.9rem;
-    }
-
-    .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-        max-width: 300px;
-    }
-
-    .modern-card {
-        padding: 1rem;
-    }
-
-    .modern-card i {
-        font-size: 2rem;
-    }
-}
-
-/* Extra Small Mobile (360px and down) */
-@media (max-width: 360px) {
-    .hero {
-        padding: 4rem 0 1rem;
-    }
-
-    .hero-title {
-        font-size: 1.35rem;
-    }
-
-    .hero-greeting {
-        font-size: 0.7rem;
-    }
-
-    .hero-description {
-        font-size: 0.85rem;
-        line-height: 1.45;
-    }
-
-    .hero-buttons {
-        max-width: 240px;
-        gap: 0.5rem;
-    }
-
-    .hero-buttons .btn {
-        padding: 0.7rem 1rem;
-        font-size: 0.7rem;
-    }
-
-    .code-window {
-        max-width: 240px;
-    }
-
-    .window-body pre {
+    
+    .comparison-table thead th {
+        padding: 0.6rem 0.15rem;
         font-size: 0.65rem;
     }
-
-    .scroll-indicator {
-        margin-top: 0.5rem;
-    }
-
-    .scroll-indicator p {
+    
+    .comparison-table thead th.feature-col {
+        width: 46%;
         font-size: 0.6rem;
+        padding-left: 0.4rem;
     }
-
-    .mouse {
-        width: 18px;
-        height: 28px;
+    
+    .comparison-table thead th.bronze-col,
+    .comparison-table thead th.silver-col,
+    .comparison-table thead th.gold-col {
+        width: 18%;
     }
-
-    .nav-logo {
-        font-size: 0.95rem;
+    
+    .package-name {
+        font-size: 0.65rem;
     }
-
-    .logo-bracket {
-        font-size: 0.9rem;
+    
+    .comparison-table tbody td {
+        padding: 0.5rem 0.15rem;
+        font-size: 0.75rem;
     }
-
-    .nav-container {
-        padding-top: 2.8rem;
+    
+    .comparison-table tbody td.feature-name {
+        font-size: 0.7rem;
+        padding: 0.5rem 0.15rem;
+        padding-left: 0.4rem;
+        line-height: 1.25;
+    }
+    
+    .comparison-table tbody td.check,
+    .comparison-table tbody td.cross,
+    .comparison-table tbody td.star {
+        font-size: 0.8rem;
+    }
+    
+    .comparison-note {
+        font-size: 0.7rem;
+        padding: 0.6rem;
     }
 }
 
-/* Landscape Mode on Mobile (short height) */
-@media (max-height: 500px) and (orientation: landscape) {
-    .hero {
-        min-height: auto;
-        padding: 4rem 0 2rem;
+/* ============================================
+   COMPARISON TABLE - EXTRA SMALL MOBILE (360px and down)
+   ============================================ */
+@media (max-width: 360px) {
+    .comparison-table-wrapper {
+        padding: 0 0.15rem;
     }
-
-    .hero-content {
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-        align-items: center;
-    }
-
-    .hero-text {
-        order: 1;
-        text-align: left;
-        align-items: flex-start;
-    }
-
-    .hero-image {
-        order: 2;
-    }
-
-    .hero-title {
-        font-size: 1.5rem;
-        min-height: auto;
-    }
-
-    .hero-description {
-        font-size: 0.85rem;
-        margin-bottom: 1rem;
-    }
-
-    .hero-buttons {
-        flex-direction: row;
-        max-width: none;
-        margin-bottom: 1rem;
-    }
-
-    .hero-buttons .btn {
-        width: auto;
-        padding: 0.6rem 1rem;
+    
+    .comparison-table {
         font-size: 0.7rem;
     }
+    
+    .comparison-table thead th {
+        padding: 0.5rem 0.1rem;
+        font-size: 0.6rem;
+    }
+    
+    .comparison-table thead th.feature-col {
+        width: 48%;
+        font-size: 0.55rem;
+        padding-left: 0.3rem;
+    }
+    
+    .comparison-table thead th.bronze-col,
+    .comparison-table thead th.silver-col,
+    .comparison-table thead th.gold-col {
+        width: 17.33%;
+    }
+    
+    .package-name {
+        font-size: 0.6rem;
+        letter-spacing: 0.2px;
+    }
+    
+    .comparison-table tbody td {
+        padding: 0.4rem 0.1rem;
+        font-size: 0.7rem;
+    }
+    
+    .comparison-table tbody td.feature-name {
+        font-size: 0.65rem;
+        padding: 0.4rem 0.1rem;
+        padding-left: 0.3rem;
+        line-height: 1.2;
+    }
+    
+    .comparison-table tbody td.check,
+    .comparison-table tbody td.cross,
+    .comparison-table tbody td.star {
+        font-size: 0.75rem;
+    }
+    
+    .comparison-note {
+        font-size: 0.65rem;
+        padding: 0.5rem;
+    }
+}
 
-    .hero-socials {
-        justify-content: flex-start;
+/* ============================================
+   COMPARISON TABLE - VERY SMALL SCREENS (320px and down)
+   ============================================ */
+@media (max-width: 320px) {
+    .comparison-table {
+        font-size: 0.65rem;
+    }
+    
+    .comparison-table thead th {
+        padding: 0.4rem 0.1rem;
+        font-size: 0.55rem;
+    }
+    
+    .comparison-table thead th.feature-col {
+        font-size: 0.5rem;
+        width: 50%;
+        padding-left: 0.25rem;
+    }
+    
+    .comparison-table thead th.bronze-col,
+    .comparison-table thead th.silver-col,
+    .comparison-table thead th.gold-col {
+        width: 16.66%;
+    }
+    
+    .package-name {
+        font-size: 0.55rem;
+    }
+    
+    .comparison-table tbody td {
+        padding: 0.35rem 0.1rem;
+        font-size: 0.65rem;
+    }
+    
+    .comparison-table tbody td.feature-name {
+        font-size: 0.6rem;
+        padding: 0.35rem 0.1rem;
+        padding-left: 0.25rem;
+        line-height: 1.15;
+    }
+}
+
+    /* Landscape Mode on Mobile */
+    @media (max-height: 500px) and (orientation: landscape) {
+        .hero {
+            min-height: auto;
+            padding: 5rem 0 2rem;
+        }
+
+        .hero-content {
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            order: 1;
+            text-align: left;
+            align-items: flex-start;
+        }
+
+        .hero-image {
+            order: 2;
+            margin-top: 0;
+        }
+
+        .hero-title {
+            font-size: 1.5rem;
+            min-height: auto;
+        }
+
+        .hero-description {
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-buttons {
+            flex-direction: row;
+            max-width: none;
+            margin-bottom: 1rem;
+        }
+
+        .hero-buttons .btn {
+            width: auto;
+            padding: 0.6rem 1rem;
+            font-size: 0.7rem;
+        }
+
+        .hero-socials {
+            justify-content: flex-start;
+        }
+
+        .code-window {
+            max-width: 280px;
+        }
+
+        .scroll-indicator {
+            display: none;
+        }
     }
 
-    .code-window {
-        max-width: 220px;
+    /* Ensure navbar stays on top */
+    .navbar {
+        z-index: 9999;
     }
 
-    .scroll-indicator {
-        display: none; /* Hide scroll indicator in landscape to save space */
+    /* Prevent horizontal scroll */
+    .comparison-table-container,
+    .comparison-table-wrapper {
+        max-width: 100%;
+        overflow-x: hidden;
     }
 }
