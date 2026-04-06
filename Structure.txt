@@ -1,0 +1,34 @@
+samooforge/                         ← Root project
+├── index.html                      ← Entry point utama
+├── css/
+│   └── style.css                   ← Stylesheet utama
+├── js/
+│   ├── main.js                     ← Main logic (legacy)
+│   ├── i18n.js                     ← Translation handler
+│   ├── utils.js                    ← Utility functions
+│   └── animations.js               ← Animation scripts
+├── data/
+│   ├── en.json                     ← Bahasa Inggris
+│   └── id.json                     ← Bahasa Indonesia
+├── Develop3/                       ← Subfolder baru (Mockup structure)
+│   ├── index.html                  ← Entry point (auto-redirect ke dashboard)
+│   └── /frontend/
+│       ├── /assets/
+│       │   ├── /css/               ← Semua component CSS
+│       │   ├── /js/
+│       │   │   ├── config.js       ← Mock data + API router
+│       │   │   ├── badage-logic.js
+│       │   │   ├── db.js           ← NEW: IndexedDB wrapper
+│       │   │   └── global-utils.js
+│       │   ├── /images/
+│       │   └── /fonts/
+│       ├── /components/            ← CSS modules
+│       ├── /pages/                 ← HTML pages
+│       ├── /logic/                 ← Logic Javascript
+│       └── /app.js            	 ← Global logic
+└── images/                         ← Foto (legacy)
+    ├── html.png
+    ├── css-3.png
+    ├── js.png
+    ├── php.png
+    └── database.png
